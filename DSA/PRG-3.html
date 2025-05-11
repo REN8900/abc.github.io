@@ -1,0 +1,621 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>In
+programming, converting expressions from infix to postfix notation plays a big
+role in efficiently evaluating expressions. This technique is widely used in
+compiler design and optimisation.&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>The&nbsp;<b>Infix</b>&nbsp;notation
+is the standard way in which we write math expressions. It has operators placed
+between operands, like A + B, for example. It’s intuitive for humans to write
+it like that, and hence, it’s the go-to format for everyday arithmetic.
+However, for computers, it can be tricky to process due to the parentheses and
+varying operator precedence in the expressions.</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>The&nbsp;<b>Postfix</b>&nbsp;notation,
+which is also called the Reverse Polish Notation (RPN), places the operator
+after the operands. So, A + B becomes AB+. This format removes the need for
+parentheses and follows a simple, consistent logic that is easy for the
+computer to pick up. It makes it much easier for computers to evaluate
+expressions quickly and efficiently.</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>In
+this article, we’ll explore the basics of&nbsp;<b>infix to postfix program in C</b>&nbsp;and
+its significance in simplifying algorithm implementation.&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:.25in;line-height:33.0pt;background:
+white'><b><span style='font-size:27.0pt;font-family:"Arial",sans-serif;
+color:#1E293B'>Algorithm to Convert Infix to Postfix Program in C</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>Here's
+the&nbsp;<b>infix to postfix algorithm in c</b>:&nbsp;</span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>Traversing the
+     Expression</span></b><span style='font-size:12.0pt;font-family:"Arial",sans-serif'>:
+     Scan the given infix expression from left to right and go character by
+     character.</span></li>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>If the Scanned
+     Character is an Operand</span></b><span style='font-size:12.0pt;
+     font-family:"Arial",sans-serif'>: Directly output the operand (e.g., A, B,
+     3, etc.) to the postfix expression.</span></li>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>If the Scanned
+     Character is an Operator&nbsp;</span></b><span style='font-size:12.0pt;
+     font-family:"Arial",sans-serif'>:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>If the operator’s
+      precedence is greater than the operator on top of the stack, or the stack
+      is empty, or the top of the stack is a (, push the scanned operator onto
+      the stack.</span></li>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>Operator
+      Precedence</span></b><span style='font-size:12.0pt;font-family:"Arial",sans-serif'>:
+      Operators like * and / have higher precedence over + and -. This step
+      ensures that operators with higher precedence are handled first.</span></li>
+ </ul>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>If the Scanned
+     Operator has Lower or Equal Precedence</span></b><span style='font-size:
+     12.0pt;font-family:"Arial",sans-serif'>:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>While the
+      operator at the top of the stack has greater than or equal precedence
+      than the current operator, pop the stack and append each popped operator
+      to the postfix expression.</span></li>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>After popping the
+      operators with higher or equal precedence, push the current operator onto
+      the stack.</span></li>
+ </ul>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>Parentheses
+     Handling</span></b><span style='font-size:12.0pt;font-family:"Arial",sans-serif'>:
+     If you encounter a (, during popping, stop popping and push the scanned
+     operator onto the stack.</span></li>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>If the Scanned
+     Character is a Left Parenthesis (</span></b><span style='font-size:12.0pt;
+     font-family:"Arial",sans-serif'>:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>Push the ( onto
+      the stack. This helps to keep track of the boundaries of sub-expressions.
+      It ensures that operators are processed correctly within those bounds.</span></li>
+ </ul>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>If the Scanned
+     Character is a Right Parenthesis )</span></b><span style='font-size:12.0pt;
+     font-family:"Arial",sans-serif'>:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>Pop the stack and
+      output each operator until a ( is encountered.</span></li>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>Eliminate both
+      the ( and ) after processing.</span></li>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>This ensures that
+      any operators inside parentheses are properly evaluated and placed in the
+      correct order.</span></li>
+ </ul>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>Repeat Steps 2 to
+     6</span></b><span style='font-size:12.0pt;font-family:"Arial",sans-serif'>:
+     Continue scanning the entire expression, applying the above steps for each
+     character.</span></li>
+ <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>End of Expression</span></b><span
+     style='font-size:12.0pt;font-family:"Arial",sans-serif'>:</span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>After the entire
+      expression has been scanned, pop and print any remaining operators from
+      the stack.</span></li>
+  <li class=MsoNormal style='color:#475569;line-height:19.5pt;background:white'><span
+      style='font-size:12.0pt;font-family:"Arial",sans-serif'>This step ensures
+      that all operators are output in the correct postfix order.</span></li>
+ </ul>
+</ol>
+
+<p class=MsoNormal style='margin-bottom:.25in;line-height:33.0pt;background:
+white'><b><span style='font-size:27.0pt;font-family:"Arial",sans-serif;
+color:#1E293B'>Implementation of Infix to Postfix in C</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>Now
+let’s look at the infix to postfix program in C by two different
+approaches.&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:27.0pt;background:
+white'><b><span style='font-size:22.5pt;font-family:"Arial",sans-serif;
+color:#334155'>1. Using an Array-Based Stack Approach&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>Here’s
+how to implement infix to postfix conversion using stack in C</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>#include
+&lt;limits.h&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>#include
+&lt;stdio.h&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>#include
+&lt;stdlib.h&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>#define
+MAX 20</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>char
+stk[20];</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>int
+top = -1;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>int
+isEmpty()  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{ 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return top == -1;  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>int
+isFull()  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{ 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return top == MAX - 1;  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>char
+peek()  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{ 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return stk[top];  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>char
+pop()  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{ 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+if (isEmpty())  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+return -1;  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+char ch = stk[top];  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+top--;  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return(ch);  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>void
+push(char oper)  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{ 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+if (isFull())  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+printf(&quot;Stack Full!!!!&quot;);  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+else {  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+top++;  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+stk[top] = oper;  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+}  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>int
+checkIfOperand(char ch)   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{  
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') || (ch &gt;= 'A' &amp;&amp; ch
+&lt;= 'Z');   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}  
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>int
+precedence(char ch)   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{  
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+switch (ch)   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+{   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+case '+':   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+case '-':   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+return 1;   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'> 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+case '*':   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+case '/':   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+return 2;   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'> 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+case '^':   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+return 3;   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+}   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return -1;   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>void
+convertInfixToPostfix(char* expression)   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{  
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+int i, j = 0;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+char postfix[MAX];</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+for (i = 0; expression[i]; ++i)   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+{   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+if (checkIfOperand(expression[i]))   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+postfix[j++] = expression[i];   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'> 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+else if (expression[i] == '(')   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+push(expression[i]);   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'> 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+else if (expression[i] == ')')   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+{   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+while (!isEmpty() &amp;&amp; peek() != '(')   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>               
+postfix[j++] = pop();   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+if (!isEmpty() &amp;&amp; peek() != '(')   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>               
+return; // Invalid expression</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+else  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>               
+pop();   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+}  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+else   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+{   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+while (!isEmpty() &amp;&amp; precedence(expression[i]) &lt;=
+precedence(peek()))   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>               
+postfix[j++] = pop();   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>           
+push(expression[i]);   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+}   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+}   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'> 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+while (!isEmpty())   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>       
+postfix[j++] = pop();   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'> 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+postfix[j] = '\0';   // Null-terminate the postfix expression</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+printf(&quot;Postfix Expression: %s\n&quot;, postfix);   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>int
+main()  </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>{ 
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+char expression[] = &quot;((x+(y*z))-w)&quot;;   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+convertInfixToPostfix(expression);   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>   
+return 0;   </span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>}</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>Output:</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>xyz*+w-</span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:21.0pt;background:
+white'><span style='font-size:12.0pt;font-family:"Arial",sans-serif;color:#475569'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
